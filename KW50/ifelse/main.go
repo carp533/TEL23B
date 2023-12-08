@@ -10,6 +10,9 @@ func main() {
 	// Eine Variable definieren und ihr sofort einen Wert geben.
 	// x ist eine Variable vom Typ int, weil 42 vom Typ int ist.
 	x := 42
+	// Alternative Deklaration einer Variablen:
+	//var y int
+	//y = 42
 
 	// Die folgende Anweisung unterscheidet, ob x größer oder kleiner ist als 100
 	// und es wird dann ein entsprechender String ausgegeben.
