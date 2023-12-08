@@ -32,3 +32,7 @@ $ cd ..
 $ go work use .\myfirstmodule\
 
 <falls Testdateien vorhanden sind (*_test.go) können die Tests mit "go test" oder "go test -v" ausgeführt werden. oder über VS Code in der Testdatei (Zeile 1) run package tests oder run file tests>
+
+## nützliche Links:
+- Go Playground: https://go.dev/play/
+- A Tour of Go: https://go.dev/tour/welcome/1
