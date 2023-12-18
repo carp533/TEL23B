@@ -6,6 +6,19 @@ import (
 	"testing"
 )
 
+func ExampleSum() {
+	//Output:
+	//15
+	fmt.Println(sum(5))
+}
+func ExampleDouble() {
+	//Output:
+	//10
+	//30
+	fmt.Println(double(5))
+	fmt.Println(double(15))
+}
+
 func TestDouble(t *testing.T) {
 	var tests = []struct {
 		a    int
