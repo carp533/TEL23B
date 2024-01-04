@@ -6,12 +6,12 @@ import (
 	"testing"
 )
 
-func ExampleSum() {
+func Examplesum() {
 	//Output:
 	//15
 	fmt.Println(sum(5))
 }
-func ExampleDouble() {
+func Exampledouble() {
 	//Output:
 	//10
 	//30

@@ -115,4 +115,5 @@ func main() {
 	//fmt.Println(x + 1)
 	//fmt.Println(lcm(25, 10)) // Erwarte:   50
 	fmt.Println(binrep(5))
+	fmt.Println(largestPrimeFactor(42))
 }
