@@ -136,3 +136,27 @@ func TestLcm(t *testing.T) {
 		})
 	}
 }
+
+func TestBinrep(t *testing.T) {
+	tests := []struct {
+		name     string
+		input    int
+		expected string
+	}{
+		{"Binary of 0", 0, "0"},
+		{"Binary of 1", 1, "1"},
+		{"Binary of 2", 2, "10"},
+		{"Binary of 5", 5, "101"},
+		{"Binary of 10", 10, "1010"},
+		{"Binary of 16", 16, "10000"},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			result := binrep(test.input)
+			if result != test.expected {
+				t.Errorf("binrep(%d) = %s, want %s", test.input, result, test.expected)
+			}
+		})
+	}
+}

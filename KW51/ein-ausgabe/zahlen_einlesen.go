@@ -11,9 +11,11 @@ import "fmt"
  * Hinweis: In der main()-Funktion steht ein Beispiel, wie man eine einzelne Zahl
  *          einliest und wieder ausgibt.
  */
-func readSum() int {
+func readZahl() int {
 	// TODO
-	return 0
+	var input int
+	fmt.Scanln(&input)
+	return input
 }
 
 /* Aufgabe 2:
@@ -41,8 +43,8 @@ func main() {
 	fmt.Scanln(&input)
 	fmt.Printf("Sie haben %v eingegeben.\n", input)
 
-	// Hier wird die Funktion readSum() aufgerufen.
-	readSum()
+	// Hier wird die Funktion readZahl() aufgerufen.
+	readZahl()
 
 	// Hier wird die Funktion readFives() aufgerufen.
 	readFives()
