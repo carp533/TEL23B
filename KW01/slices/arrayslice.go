@@ -57,13 +57,14 @@ func main() {
 	fmt.Println(matrix)
 
 	// Das Element in der Mitte verändern und ausgeben:
-	matrix[1][1] = 500
+	matrix[2][1] = 500
 	fmt.Println(matrix)
 	fmt.Println(matrix[1][1])
 
 	// Vorsicht Falle:
 	row := []int{1, 2, 3}
 	matrix2 := [][]int{row, row, row}
+
 	fmt.Println(matrix2)
 	matrix2[0][2] = 42
 	fmt.Println(matrix2)
@@ -71,7 +72,7 @@ func main() {
 	//Listen können mit dem eingbauten Befehl make erstellt werden
 	//make(<Datentyp>, <Länge>, <Kapazität>)
 	e := make([]int, 5)
-	printSlice("a", e)
+	printSlice("e", e)
 
 	b := make([]int, 0, 5)
 	printSlice("b", b)
