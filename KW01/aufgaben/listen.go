@@ -4,21 +4,33 @@ import (
 	"fmt"
 )
 
-/*
-	 Aufgabe 1:
-	 *
-	 * Schreiben Sie eine Funktion, die den Benutzer immer wieder nach einer Zahl fragt,
-	 * bis er eine 0 eingibt. Anschließend soll eine Liste zurückgegeben werden, die die
-	 * eingegebenen Zahlen enthält.
-	 * verwenden Sie
-	 		var input int
-			fmt.Scanln(&input)
-	 * Testen Sie die Funktion in der main Funktion
-	 *
-*/
+/* Aufgabe 1:
+ *
+ * Schreiben Sie eine Funktion, die den Benutzer immer wieder nach einer Zahl fragt,
+ * bis er eine 0 eingibt. Anschließend soll eine Liste zurückgegeben werden, die die
+ * eingegebenen Zahlen enthält.
+ * Testen Sie die Funktion in der main Funktion
+ *
+ */
 func readNumbers() []int {
 	result := make([]int, 0)
 	// TODO
+	for {
+		var input int
+		fmt.Scanln(&input)
+
+		//mit Fehlerbehabdlung:
+		// _, err := fmt.Scanln(&input)
+		// if err != nil {
+		// 	log.Fatal(err)
+		// }
+
+		if input == 0 {
+			break
+		}
+		result = append(result, input)
+	}
+
 	return result
 }
 
@@ -32,6 +44,9 @@ func readNumbers() []int {
 func readSum() int {
 	// TODO
 	var sum int
+	for _, v := range readNumbers() {
+		sum += v
+	}
 	return sum
 }
 
@@ -43,7 +58,14 @@ func readSum() int {
  */
 func readFives() int {
 	// TODO
-	return 0
+	//return 0
+	var count int
+	for _, v := range readNumbers() {
+		if v == 5 {
+			count += 1
+		}
+	}
+	return count
 }
 
 /* Aufgabe 4:
@@ -60,7 +82,11 @@ func readFives() int {
  */
 func divisors(n int) []int {
 	result := make([]int, 0)
-	//TODO
+	for i := 1; i <= n; i++ {
+		if n%i == 0 {
+			result = append(result, i)
+		}
+	}
 	return result
 }
 
@@ -75,7 +101,8 @@ func divisors(n int) []int {
  */
 func isPrime(n int) bool {
 	// TODO
-	return true
+	// return true
+	return len(divisors(n)) == 2
 }
 
 /* Aufgabe 5:
@@ -84,12 +111,22 @@ func isPrime(n int) bool {
  * sowohl Position als auch Wert des größten Elements bestimmt.
  *
  * Hinweis: Aufruf in main() z.B. mit `x,y := listMax(...)`
- * Falls die Liste leer ist, soll 0,-1 zurück gegeben werden.
  * Testen Sie die Funktion mit den gegebenen Testfunktionen
  */
 func listMax(list []int) (val int, pos int) {
 	// TODO
-	return 0, 0
+	// return 0, 0
+	if len(list) == 0 {
+		return 0, -1
+	}
+	val, pos = list[0], 0
+	for index, value := range list[1:] {
+		if value > val {
+			val = value
+			pos = index + 1
+		}
+	}
+	return val, pos
 }
 
 func main() {
