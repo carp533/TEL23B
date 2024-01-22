@@ -26,11 +26,15 @@ func (ll *LinkedList) AddAtEnd(data int) {
 		ll.head = newNode
 		return
 	}
-	last := ll.head
-	for last.next != nil {
-		last = last.next
+	ll.head.add(newNode)
+}
+func (n *Node) add(node *Node) {
+	if n.next == nil {
+		n.next = node
+		return
 	}
-	last.next = newNode
+	n.next.add(node)
+
 }
 
 func (ll *LinkedList) Print() {
