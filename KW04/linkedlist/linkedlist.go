@@ -46,11 +46,25 @@ func (ll *LinkedList) Print() {
 	fmt.Println()
 }
 
+func (ll *LinkedList) Size() int {
+	if ll.head == nil {
+		return 0
+	}
+	return ll.head.size()
+}
+func (node *Node) size() int {
+	if node.next == nil {
+		return 1
+	}
+	return 1 + node.next.size()
+}
+
 /*
 Aufgaben:
-(1) implementiere die Methode "Size"
+(1) implementiere die Methode "Size" rekursiv
 
 	func (ll LinkedList) Size() int
+	Hilfdfunktion func (node Node) size() int
 
 (2) implementiere die "IsInList" Methode
 
@@ -67,6 +81,10 @@ func main() {
 	ll.AddAtEnd(1)
 	ll.AddAtEnd(2)
 	ll.AddAtEnd(3)
-
+	fmt.Println("ll.Size()=", ll.Size())
+	ll.AddAtEnd(3)
+	ll.AddAtEnd(3)
+	ll.AddAtEnd(3)
+	fmt.Println("ll.Size()=", ll.Size())
 	ll.Print() // Output: 1 2 3
 }
