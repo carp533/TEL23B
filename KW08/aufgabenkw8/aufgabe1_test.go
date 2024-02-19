@@ -12,7 +12,17 @@ Wenn n   gerade ist: n -> n/2
 Wenn n ungerade ist: n -> (3 * n) + 1
 */
 func Hs(n int) []int {
-	return nil
+	result := make([]int, 0)
+	result = append(result, n)
+	for n != 1 {
+		if n%2 == 0 {
+			n = n / 2
+		} else {
+			n = 3*n + 1
+		}
+		result = append(result, n)
+	}
+	return result
 }
 
 func ExampleHs() {
@@ -27,7 +37,14 @@ berechne alle Hailstone Sequenzen < 100.000 und gib den Startwert und Länge der
 längsten Sequenz aus.
 */
 func HsMax(max int) (maxN, maxLen int) {
-	return 0, 0
+	maxN, maxLen = 1, 1
+	for i := 1; i <= max; i++ {
+		l := len(Hs(i))
+		if l > maxLen {
+			maxN, maxLen = i, l
+		}
+	}
+	return maxN, maxLen
 }
 
 func ExampleHsMax() {
