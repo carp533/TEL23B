@@ -94,7 +94,17 @@ func minimax(b board) (float64, []int) {
 		return maxEval, bestMove
 	} else {
 		minEval := math.Inf(1)
-		//TODO
+		for index, item := range possibleMoves {
+			tempBoard := board{item, PLAYER_MAX}
+			eval, move := minimax(tempBoard)
+			if eval <= minEval {
+				minEval = eval
+				bestMove = moveIndex[index]
+				if move == nil {
+					break
+				}
+			}
+		}
 		return minEval, bestMove
 	}
 
