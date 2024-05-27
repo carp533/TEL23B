@@ -1,5 +1,7 @@
 package main
 
+import "container/heap"
+
 /* Aufgabe: ermittle die K häufigsten Elemente einer Liste
 hierfür möchten wir einen Heap verwenden.
 A) Schaue dir zunächst die Fehlermeldung an und korrigiere diese, indem
@@ -15,9 +17,9 @@ D) programmiere eine Beispielfunktion und eine Testfunktion
 func TopKFrequent(nums []int, k int) []int {
 	// count := make(map[int]int)
 	// TODO: erstelle eine map mit den Elementen aus nums und deren Häufigkeit
-	// nums_ := make(Nums, 0)
+	nums_ := make(Nums, 0)
 	// TODO: wandle die map in die Liste nums_ um
-	// heap.Init(&nums_)
+	heap.Init(&nums_)
 	var res []int
 	// TODO: rufe k mal Pop auf des Heaps und schreibe das Ergebnis in die Liste res
 	return res
