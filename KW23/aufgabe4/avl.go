@@ -81,6 +81,9 @@ func insertR(root *Node, data Key) (*Node, bool) {
 		return &Node{Data: data}, false
 	}
 	dir := 0
+	if root.Data.Eq(data) {
+		return root, true
+	}
 	if root.Data.Less(data) {
 		dir = 1
 	}

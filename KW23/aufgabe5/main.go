@@ -1,7 +1,3 @@
-/*
-*********************************************************************
-* Aufgabe A (10 Punkte):
-* AUFGABENSTELLUNG:
 // Implementiere eine Funktion in Go, die einen Zähler erzeugt. Jedes Mal, wenn der Zähler aufgerufen wird, soll er um 1 erhöht werden und den aktuellen Zählerstand zurückgeben.
 
 // Beschreibung:
@@ -12,7 +8,6 @@
 // fmt.Println(counter()) // Ausgabe: 1
 // fmt.Println(counter()) // Ausgabe: 2
 // fmt.Println(counter()) // Ausgabe: 3
-*/
 package main
 
 import (
@@ -21,7 +16,11 @@ import (
 
 // NewCounter gibt eine Zählerfunktion zurück
 func NewCounter() func() int {
-
+	count := 0
+	return func() int {
+		count++
+		return count
+	}
 }
 
 func main() {

@@ -40,6 +40,16 @@ func Smooth(values []float64, k int) []float64 {
 	smoothed := make([]float64, n)
 
 	// Gleite über die Liste und berechne das arithmetische Mittel für jedes Fenster
+	for i := 0; i < n; i++ {
+		start := max(0, i-k/2)
+		end := min(n, i+k/2+1)
+		sum := 0.0
+		for j := start; j < end; j++ {
+			sum += values[j]
+		}
+		smoothed[i] = sum / float64(end-start)
+	}
+
 	return smoothed
 }
 

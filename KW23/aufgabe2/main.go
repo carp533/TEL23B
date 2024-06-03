@@ -46,21 +46,18 @@ func NewLSystem(axiom string, rules map[rune]string) *LSystem {
 }
 
 // Iterate führt eine bestimmte Anzahl von Iterationen des L-Systems durch
-// Wert der letzten Iteration soll in ls.result
 func (ls *LSystem) Iterate(n int) {
-	//Hinweis: eine Möglichkeit ist es, strings.Builder zu verwenden:
-	// var newResult strings.Builder
-	// string schreiben:
-	// func (b *strings.Builder) WriteString(s string) (int, error)
-	// zeichen schreiben:
-	// func (b *strings.Builder) WriteRune(r rune) (int, error)
-	// ergebenis:
-	// func (b *strings.Builder) String() string
-	// newResult.WriteString(replacement)
-	// newResult.WriteRune(char)
-	// newResult.String()
-	var newResult strings.Builder
-	_ = newResult
+	for i := 0; i < n; i++ {
+		var newResult strings.Builder
+		for _, char := range ls.result {
+			if replacement, exists := ls.rules[char]; exists {
+				newResult.WriteString(replacement)
+			} else {
+				newResult.WriteRune(char)
+			}
+		}
+		ls.result = newResult.String()
+	}
 }
 
 // Result gibt das aktuelle Ergebnis des L-Systems zurück

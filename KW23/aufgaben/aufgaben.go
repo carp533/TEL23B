@@ -10,9 +10,7 @@ rechten Kinder eines Knotens in einem Heap zurückzugeben. Implementiere
 dieses Interface für einen Max-Heap, der als Array dargestellt wird.
 
 Beschreibung:
-Erstelle ein Interface HeapNode mit den Methoden
-	Left(index int) int
-	Right(index int) int
+Erstelle ein Interface HeapNode mit den Methoden Left() und Right().
 Implementiere dieses Interface für eine Struktur Heap so, dass die Methoden
 die Indizes der linken und rechten Kinder eines Knotens im Heap zurückgeben.
 Die Kinder-Indizes sollten für den Fall, dass ein Kind existiert,
@@ -35,6 +33,10 @@ import (
 )
 
 // HeapNode Interface mit Left und Right Methoden
+type HeapNode interface {
+	Left(index int) int
+	Right(index int) int
+}
 
 // Heap Struktur, die das HeapNode Interface implementiert
 type Heap struct {
@@ -47,8 +49,22 @@ func NewHeap(elements []int) *Heap {
 }
 
 // Left gibt das linke Kind eines Knotens zurück
+func (h *Heap) Left(index int) int {
+	leftIndex := 2*index + 1
+	if leftIndex < len(h.elements) {
+		return h.elements[leftIndex]
+	}
+	return -1 // Ungültiger Index
+}
 
 // Right gibt das rechte Kind eines Knotens zurück
+func (h *Heap) Right(index int) int {
+	rightIndex := 2*index + 2
+	if rightIndex < len(h.elements) {
+		return h.elements[rightIndex]
+	}
+	return -1 // Ungültiger Index
+}
 
 func main() {
 	heap := NewHeap([]int{42, 29, 18, 14, 7, 18, 12, 11, 5, 13})
