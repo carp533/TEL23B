@@ -23,6 +23,7 @@ package main
 // false
 import (
 	"fmt"
+	"strings"
 )
 
 // IsBalancedTags prüft, ob die Markup-Tags in der Zeichenkette korrekt ausbalanciert sind
@@ -32,18 +33,35 @@ func IsBalancedTags(s string) bool {
 		"</open>":  "<open>",
 		"</start>": "<start>",
 	}
-	_, _ = stack, tags
 
-	// suche '<'
-	//     suche '>'
-	// 	bei Fehlern: stop
-	// 	lese Text zwischen < und >
-	// 	prüfe ob es sich um ein schließendes tag handelt '</'; du kannst z.B. strings.HasPrefix(tag, "</") verwenden
-	// 	  ja: prüfe, ob das oberste element des stack zum schließenden tag passt
-	// 	  nein: füge das element zum stack hinzu
-	// am ende muss stack leer sein
+	i := 0
+	for i < len(s) {
+		if s[i] == '<' {
+			j := i
+			for j < len(s) && s[j] != '>' {
+				j++
+			}
+			if j == len(s) {
+				return false // Ungültiges Tag-Format
+			}
+			tag := s[i : j+1]
+			if strings.HasPrefix(tag, "</") {
+				// Schließendes Tag
+				if len(stack) == 0 || stack[len(stack)-1] != tags[tag] {
+					return false
+				}
+				stack = stack[:len(stack)-1]
+			} else {
+				// Öffnendes Tag
+				stack = append(stack, tag)
+			}
+			i = j + 1
+		} else {
+			i++
+		}
+	}
 
-	return false
+	return len(stack) == 0
 }
 
 func main() {
